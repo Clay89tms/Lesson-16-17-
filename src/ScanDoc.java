@@ -1,11 +1,13 @@
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class ScanDoc {
-    static List<String> list = new ArrayList<>();
+    //    static List<String> list = new ArrayList<>();
     static Map<String, Document> map = new HashMap<>();
 
     //считать файл.     найти в файле.      создать док и записать туда совпадения.     сохранить в мапку кей(имя) вэлью(док).
@@ -81,10 +83,16 @@ public class ScanDoc {
                     Matcher matcherPhone = patternPhone.matcher(scannerPathLine + files[i]);
                     Matcher matcherEmail = patternEmail.matcher(scannerPathLine + files[i]);
                     Document document = new Document();
-                    System.out.println(files[i].getName());
-
+                    String path = (scannerPathLine + "\\" + files[i].getName());
+                    System.out.println(path);
+                    if (Pattern.matches(regexDocNum, path))
+                        System.out.println();
 
                 }
+//                    System.out.println(files[i].getName());
+
+
+            }
 
 //            for (int i = 1; i < (files.length) && (scannerInt.hasNextInt()); i++) {
 //                list = Files.readAllLines(Path.of(scannerPathLine + files[i - 1].getName()));
@@ -103,7 +111,7 @@ public class ScanDoc {
 //            }
 //            for (int i = 0; i < files1.length; i++) {
 //                System.out.println(i + ") " + files1[i].getName());
-            }
         }
     }
 }
+
